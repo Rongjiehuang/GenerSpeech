@@ -30,6 +30,7 @@ python examples/wav2vec/wav2vec_manifest.py /path/to/waves --dest $DATA_DIR --ex
 ```
 $ext should be set to flac, wav, or whatever format your dataset happens to use that soundfile can read.
 $valid should be set to some reasonable percentage (like 0.01) of training data to use for validation.
+
 4. Create label `.ltr`. You could refer to the [example](exp/data/VOX1).
 5. Download pre-trained wav2vec 2.0 base model [here](https://github.com/facebookresearch/fairseq/blob/main/examples/wav2vec/README.md) to `W2V_PATH`.
 
@@ -44,8 +45,8 @@ bash run_emotion.sh    # Train emotion encoder
 ### Evaluation
 
 ```bash
-bash evaluate.sh   # Train speaker encoder
-bash evaluate_emotion.sh    # Train emotion encoder
+bash evaluate.sh   # Evaluate speaker encoder
+bash evaluate_emotion.sh    # Evaluate emotion encoder
 ```
 
 ### Inference
