@@ -1,0 +1,10 @@
+neu 1
+hap 2
+sad 3
+ang 4
+oth 5
+exc 6
+sur 7
+fru 8
+fea 9
+dis 10
