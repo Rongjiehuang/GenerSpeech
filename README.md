@@ -10,17 +10,17 @@ PyTorch Implementation of [GenerSpeech (NeurIPS'22)](https://arxiv.org/abs/2205.
 
 We observe that the CNN-based speech encoder works well. To simplify overall pipeline, we provide our Global Emotion/Speaker Encoder re-implementation and pretrained models as open source in this branch.
 
-For implementation of the wav2vec 2.0 global encoder, please refer to the wav2vec branch.
+For implementation of the wav2vec 2.0 global encoder, please refer to the wav2vec branch [here](https://github.com/Rongjiehuang/GenerSpeech/tree/wav2vec).
 
 ### Support Datasets and Pretrained Models
 
+Download the pretrained model we provide [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/rongjiehuang_zju_edu_cn/Eko36YpkWdhKjLxAptY-idgBN0z5OC8q7eO0n3wYZEq2hA?e=gROUjE). 
 
+| Model       | Discription              | 
+|-------------|--------------------------|
+| Encoder     | Global Emotion Encoder   |
 
-| Model         | Dataset      |
-|---------------|--------------|
-| SpeechEncoder | LibriTTS,ESD |
-
-
+For other datasets, please fine-tune the pretrained models for better results.
 
 ## Inference
 ### Emotion Embedding
@@ -56,22 +56,20 @@ A GPU is mandatory, but you don't necessarily need a high tier GPU if you only w
 
 ### Datasets
 
-Ideally, all your datasets are kept under a same directory i.e., <datasets_root>. All prepreprocessing scripts will, by default, output the clean data to a new directory SV2TTS created in your datasets root directory. Inside this directory will be created a directory for the encoder.
+Ideally, all your datasets are kept under a same directory i.e., ```<datasets_root>```. All prepreprocessing scripts will, by default, output the clean data to a new directory SV2TTS created in your datasets root directory. Inside this directory will be created a directory for the encoder.
 
-For the encoder:
-
-LibriSpeech: train-other-500 (extract as LibriSpeech/train-other-500)
-VoxCeleb1: Dev A - D as well as the metadata file (extract as VoxCeleb1/wav and VoxCeleb1/vox1_meta.csv)
-VoxCeleb2: Dev A - H (extract as VoxCeleb2/dev)
 
 ### Preprocessing and training
-
+```
 python encoder_preprocess.py <datasets_root>
 python encoder_train.py my_run <datasets_root>/SV2TTS/encoder
+```
 
 ### Generate speaker embeddings
 
+```
 python generate_embeddings.py
+```
 
 ## Acknowledgements
 This implementation uses parts of the code from the following Github repos:
