@@ -1,0 +1,38 @@
+name: generspeech
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - pip=20.3
+  - numpy=1.19.2
+  - openfst
+  - pynini
+  - ngram
+  - baumwelch
+  - pip:
+    - montreal-forced-aligner==2.0.0b3
+    - scipy
+    - matplotlib
+    - librosa==0.8.0
+    - torch
+    - torchaudio
+    - tqdm
+    - pandas
+    - numba==0.53.1
+    - numpy
+    - scipy==1.3
+    - PyYAML
+    - tensorboardX
+    - pyloudnorm
+    - setuptools>=41.0.0
+    - g2p_en
+    - resemblyzer
+    - webrtcvad
+    - tensorboard==2.6.0
+    - pycwt
+    - praat-parselmouth==0.3.3
+    - einops
+    - chardet
+    - h5py
+    - transformers
