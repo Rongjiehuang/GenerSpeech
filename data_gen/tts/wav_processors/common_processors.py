@@ -5,7 +5,6 @@ import numpy as np
 from data_gen.tts.wav_processors.base_processor import BaseWavProcessor, register_wav_processors
 from data_gen.tts.data_gen_utils import trim_long_silences
 from utils.audio import save_wav
-from utils.rnnoise import rnnoise
 from utils.hparams import hparams
 
 
@@ -73,14 +72,3 @@ class TrimAllSILProcessor(BaseWavProcessor):
             np.save(f'{processed_dir}/sil_mask/{item_name}.npy', audio_mask)
         return output_fn, sr
 
-
-@register_wav_processors(name='denoise')
-class DenoiseProcessor(BaseWavProcessor):
-    @property
-    def name(self):
-        return 'Denoise'
-
-    def process(self, input_fn, sr, tmp_dir, processed_dir, item_name, preprocess_args):
-        output_fn = self.output_fn(input_fn)
-        rnnoise(input_fn, output_fn, out_sample_rate=sr)
-        return output_fn, sr
