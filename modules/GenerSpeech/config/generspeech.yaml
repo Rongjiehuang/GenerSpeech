@@ -58,7 +58,7 @@ preprocess_args:
   mfa_group_shuffle: false
   mfa_offset: 0.02
   # wav processors
-  wav_processors: [sox_resample]
+  wav_processors: []
   save_sil_mask: true
   vad_max_silence_length: 12
 

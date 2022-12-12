@@ -174,7 +174,10 @@ class BasePreprocessor:
                     input_fn, sr, output_fn_for_align = outputs
                 else:
                     input_fn, sr = outputs
-            return input_fn, output_fn_for_align
+            if output_fn_for_align is None:
+                return input_fn, input_fn
+            else:
+                return input_fn, output_fn_for_align
         else:
             return wav_fn, wav_fn
 

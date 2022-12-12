@@ -4,7 +4,7 @@ from functools import partial
 from tqdm import tqdm
 
 
-def chunked_worker(worker_id, map_func, args, results_queue=None, init_ctx_func=None):
+def chunked_worker_binarize(worker_id, map_func, args, results_queue=None, init_ctx_func=None):
     ctx = init_ctx_func(worker_id) if init_ctx_func is not None else None
     for job_idx, arg in args:
         try:
@@ -20,6 +20,25 @@ def chunked_worker(worker_id, map_func, args, results_queue=None, init_ctx_func=
             results_queue.put((job_idx, None))
 
 
+def chunked_worker(worker_id, args_queue=None, results_queue=None, init_ctx_func=None):
+    ctx = init_ctx_func(worker_id) if init_ctx_func is not None else None
+    while True:
+        args = args_queue.get()
+        if args == '<KILL>':
+            return
+        job_idx, map_func, arg = args
+        try:
+            map_func_ = partial(map_func, ctx=ctx) if ctx is not None else map_func
+            if isinstance(arg, dict):
+                res = map_func_(**arg)
+            elif isinstance(arg, (list, tuple)):
+                res = map_func_(*arg)
+            else:
+                res = map_func_(arg)
+            results_queue.put((job_idx, res))
+        except:
+            traceback.print_exc()
+            results_queue.put((job_idx, None))
 
 class MultiprocessManager:
     def __init__(self, num_workers=None, init_ctx_func=None, multithread=False):
@@ -102,6 +121,7 @@ def multiprocess_run(map_func, args, num_workers=None, ordered=True, init_ctx_fu
             yield res
 
 
+
 def chunked_multiprocess_run(
         map_func, args, num_workers=None, ordered=True,
         init_ctx_func=None, q_max_size=1000, multithread=False):
@@ -125,7 +145,7 @@ def chunked_multiprocess_run(
     workers = []
     for i in range(num_workers):
         args_worker = args[i::num_workers]
-        p = Process(target=chunked_worker, args=(
+        p = Process(target=chunked_worker_binarize, args=(
             i, map_func, args_worker, results_queues[i], init_ctx_func), daemon=True)
         workers.append(p)
         p.start()
