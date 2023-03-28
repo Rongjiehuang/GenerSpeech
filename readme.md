@@ -56,7 +56,7 @@ Here we provide a speech synthesis pipeline using GenerSpeech.
 1. Prepare **GenerSpeech** (acoustic model): Download and put checkpoint at `checkpoints/GenerSpeech`
 2. Prepare **HIFI-GAN** (neural vocoder): Download and put checkpoint at `checkpoints/trainset_hifigan`
 3. Prepare **Emotion Encoder**: Download and put checkpoint at `checkpoints/Emotion_encoder.pt`
-4. Prepare **dataset**: Download and put [statistical files](https://zjueducn-my.sharepoint.com/:f:/g/personal/rongjiehuang_zju_edu_cn/EkewjLpkfoJBgOBr5F_59EgBy_twkdZ1yTmtL4HafBJqwg?e=hu671b) at `data/binary/training_set`
+4. Prepare **dataset**: Download and put statistical files at `data/binary/training_set`
 5. Prepare **path/to/reference_audio (16k)**: By default, GenerSpeech uses **[ASR](https://huggingface.co/facebook/wav2vec2-base-960h) + [MFA](https://montreal-forced-aligner.readthedocs.io/)** to obtain the text-speech alignment from reference.
 ```bash
 CUDA_VISIBLE_DEVICES=$GPU python inference/GenerSpeech.py --config modules/GenerSpeech/config/generspeech.yaml  --exp_name GenerSpeech --hparams="text='here we go',ref_audio='assets/0011_001570.wav'"
@@ -81,7 +81,7 @@ CUDA_VISIBLE_DEVICES=$GPU python data_gen/tts/bin/binarize.py --config $path/to/
 ```
 
 You could also build a dataset via [NATSpeech](https://github.com/NATSpeech/NATSpeech), which shares a common MFA data-processing procedure.
-We also provide our processed dataset (16kHz LibriTTS+ESD) [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/rongjiehuang_zju_edu_cn/EicJK9PNylNEl5fUlFRBExIBzK2MmKjuGSbt8n4HztMv6A?e=h6r8vM).
+We also provide our processed dataset (16kHz LibriTTS+ESD).
 
 
 
