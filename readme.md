@@ -25,7 +25,7 @@ We provide an example of how you can generate high-fidelity samples using GenerS
 To try on your own dataset, simply clone this repo in your local machine provided with NVIDIA GPU + CUDA cuDNN and follow the below instructions.
 
 ### Support Datasets and Pretrained Models
-You can use pretrained models we provide [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/rongjiehuang_zju_edu_cn/EicJK9PNylNEl5fUlFRBExIBzK2MmKjuGSbt8n4HztMv6A?e=h6r8vM). Details of each folder are as in follows:
+You can use pretrained models we provide [here](https://huggingface.co/spaces/Rongjiehuang/GenerSpeech/tree/main/checkpoints). Details of each folder are as in follows:
 
 | Model       | Dataset (16 kHz) | Discription                                                              | 
 |-------------|------------------|--------------------------------------------------------------------------|
