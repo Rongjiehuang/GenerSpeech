@@ -6,7 +6,6 @@ PyTorch Implementation of [GenerSpeech (NeurIPS'22)](https://arxiv.org/abs/2205.
 
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2205.07211)
 [![GitHub Stars](https://img.shields.io/github/stars/Rongjiehuang/GenerSpeech?style=social)](https://github.com/Rongjiehuang/GenerSpeech)
-![visitors](https://visitor-badge.glitch.me/badge?page_id=Rongjiehuang/GenerSpeech)
 
 We provide our implementation and pretrained models in this repository.
 
@@ -25,7 +24,7 @@ We provide an example of how you can generate high-fidelity samples using GenerS
 To try on your own dataset, simply clone this repo in your local machine provided with NVIDIA GPU + CUDA cuDNN and follow the below instructions.
 
 ### Support Datasets and Pretrained Models
-You can use pretrained models we provide [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/rongjiehuang_zju_edu_cn/EicJK9PNylNEl5fUlFRBExIBzK2MmKjuGSbt8n4HztMv6A?e=h6r8vM). Details of each folder are as in follows:
+You can use pretrained models we provide [here](https://huggingface.co/spaces/Rongjiehuang/GenerSpeech/tree/main/checkpoints), and data [here](https://huggingface.co/spaces/Rongjiehuang/GenerSpeech/tree/main/data/binary/training_set). Details of each folder are as in follows:
 
 | Model       | Dataset (16 kHz) | Discription                                                              | 
 |-------------|------------------|--------------------------------------------------------------------------|
@@ -50,7 +49,7 @@ By default, this implementation uses as many GPUs in parallel as returned by `to
 You can specify which GPUs to use by setting the `CUDA_DEVICES_AVAILABLE` environment variable before running the training module.
 
 
-## Inference towards style transfer of custom voice
+## Inference (Zero-shot TTS)
 Here we provide a speech synthesis pipeline using GenerSpeech. 
 
 1. Prepare **GenerSpeech** (acoustic model): Download and put checkpoint at `checkpoints/GenerSpeech`
